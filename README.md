@@ -56,6 +56,6 @@ width="200"
 
 ## Permissions
 
-On Android versions prior to Android 6.0, wallabag requires the following permissions:
+
 - Full Network Access.
 - Read and write access to external storage.
