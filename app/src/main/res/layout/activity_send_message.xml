@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:launchMode="singleTask"
+    android:id="@+id/send_message_layout"
+    android:windowSoftInputMode="adjustPan"
+    android:background="#fafafa"
+    tools:context=".Activities.SendMessageActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:elevation="20dp"
+        android:id="@+id/appbar"
+        android:padding="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:elevation="20dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentStart="true"
+                    android:id="@+id/backbtn"
+                    app:tint="@color/black"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:layout_centerVertical="true"
+                    tools:ignore="ContentDescription"
+                    android:layout_alignParentLeft="true" />
+
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/button_image"
+                    android:layout_width="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_height="40dp"
+                    android:layout_centerVertical="true"
+                    app:civ_border_color="@color/gray3"
+                    app:civ_border_width="1dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@id/backbtn"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/backbtn" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:padding="5dp"
+                    android:id="@+id/childRelative"
+                    android:layout_toStartOf="@+id/btn_more"
+                    android:background="?selectableItemBackground"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/button_image"
+                    android:layout_marginStart="10dp"
+                    android:layout_toLeftOf="@+id/btn_more"
+                    android:layout_toRightOf="@id/button_image">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/username"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/medium"
+                        android:textColor="@color/black"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="@string/online"
+                        android:id="@+id/text_online"
+                        android:layout_below="@id/username"
+                        android:fontFamily="@font/light"
+                        android:textColor="@color/green"
+                        />
+
+                </RelativeLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    app:tint="@color/black"
+                    android:layout_marginEnd="10dp"
+                    android:id="@+id/btn_more"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    tools:ignore="ContentDescription"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chatrecycler"
+        android:overScrollMode="never"
+        android:layout_centerHorizontal="true"
+        tools:listitem="@layout/chat_item_left"
+        android:layout_below="@id/appbar"
+        android:layout_marginTop="10dp"
+        android:layout_above="@id/layout" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:elevation="10dp"
+        android:background="@drawable/bottom_design"
+        android:id="@+id/layout"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true">
+        <include
+            android:id="@+id/inputFieldItem"
+            layout="@layout/chat_input_field"
+            android:layout_width="match_parent"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:visibility="gone"
+            android:id="@+id/extra_tools"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="50dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    android:elevation="0dp"
+                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:id="@+id/layout_image_btn"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:background="@drawable/circle"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:src="@drawable/ic_gallery_icon"
+                            android:layout_gravity="center"
+                            app:tint="#382BFB"
+                            tools:ignore="ContentDescription" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/image"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/bold"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#F8808080"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="50dp"
+                    app:cardCornerRadius="40dp"
+                    android:layout_gravity="center"
+                    android:elevation="0dp"
+                    app:cardElevation="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:id="@+id/layout_file_btn"
+                    android:layout_height="50dp">
+                    <LinearLayout
+                        android:layout_width="50dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="#fff1eb"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:layout_height="50dp">
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:src="@drawable/ic_files"
+                            android:layout_gravity="center"
+                            app:tint="#ff782e"
+                            />
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/file"
+                    android:fontFamily="@font/bold"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#F8808080"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="#fafafa"
+        android:visibility="gone"
+        android:id="@+id/block_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f3f3f3"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/blocked_acc"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:id="@+id/block_account_text"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:paddingTop="25dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You can\'t send messages ,images or files to this account."
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lines="2"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:padding="5dp"
+            tools:ignore="HardcodedText" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#f3f3f3"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/white"
+            android:id="@+id/unblock_layout"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/unblock"
+                android:background="?selectableItemBackground"
+                android:id="@+id/unblock_btn"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/regular"
+                android:padding="15dp"
+                />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#f3f3f3"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/delete"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/red"
+                android:fontFamily="@font/regular"
+                android:padding="15dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
